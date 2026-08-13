@@ -29,6 +29,11 @@ class Settings(BaseSettings):
     dpdp_compliance_mode: str = os.getenv("DPDP_COMPLIANCE_MODE", "strict")
     audit_log_bucket: str = os.getenv("AUDIT_LOG_BUCKET", "bfsi-audit-logs")
 
+    # MLflow
+    mlflow_tracking_uri: str = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
+    mlflow_experiment_name: str = "bfsi-credit-underwriting"
+
+
     # Underwriting
     max_loan_amount: float = 100_000_000
     min_loan_amount: float = 10_000

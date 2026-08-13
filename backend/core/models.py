@@ -74,3 +74,30 @@ class LoanApplicationState(BaseModel):
     next_agent: str = ""
     error: str | None = None
     processing_time_ms: int = 0
+
+
+
+class LoanApplicationRequest(BaseModel):
+    applicant_id: str
+    loan_type: str = "personal"
+    loan_amount: float
+    loan_tenure_months: int = 60
+    documents_received: list[str]
+    monthly_income: float
+    monthly_obligations: float = 0.0
+    bank_balance_avg: float = 0.0
+    bureau_score: int = 0
+
+
+class LoanDecisionResponse(BaseModel):
+    application_id: str
+    decision: str
+    approved_amount: float
+    interest_rate: float
+    tenure_months: int
+    confidence: float
+    key_factors: list[str]
+    decision_reason: str
+    shap_explanation: dict
+    rbi_compliant: bool
+    processing_time_ms: int
